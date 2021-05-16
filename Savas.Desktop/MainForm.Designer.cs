@@ -59,7 +59,7 @@ namespace Savas.Desktop
             this.label4.BackColor = System.Drawing.SystemColors.Control;
             this.label4.Font = new System.Drawing.Font("AlphaSmart 3000", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label4.Location = new System.Drawing.Point(565, 11);
+            this.label4.Location = new System.Drawing.Point(577, 13);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(100, 23);
             this.label4.TabIndex = 6;
@@ -72,7 +72,7 @@ namespace Savas.Desktop
             this.labelTime.BackColor = System.Drawing.SystemColors.Control;
             this.labelTime.Font = new System.Drawing.Font("AlphaSmart 3000", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.labelTime.Location = new System.Drawing.Point(565, 34);
+            this.labelTime.Location = new System.Drawing.Point(577, 36);
             this.labelTime.Name = "labelTime";
             this.labelTime.Size = new System.Drawing.Size(100, 23);
             this.labelTime.TabIndex = 7;
@@ -85,7 +85,7 @@ namespace Savas.Desktop
             this.labelScor.BackColor = System.Drawing.SystemColors.Control;
             this.labelScor.Font = new System.Drawing.Font("AlphaSmart 3000", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelScor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.labelScor.Location = new System.Drawing.Point(661, 34);
+            this.labelScor.Location = new System.Drawing.Point(673, 36);
             this.labelScor.Name = "labelScor";
             this.labelScor.Size = new System.Drawing.Size(100, 23);
             this.labelScor.TabIndex = 8;
@@ -98,7 +98,7 @@ namespace Savas.Desktop
             this.label7.BackColor = System.Drawing.SystemColors.Control;
             this.label7.Font = new System.Drawing.Font("AlphaSmart 3000", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label7.Location = new System.Drawing.Point(661, 11);
+            this.label7.Location = new System.Drawing.Point(673, 13);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(100, 23);
             this.label7.TabIndex = 9;

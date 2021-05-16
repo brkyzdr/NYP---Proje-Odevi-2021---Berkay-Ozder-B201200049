@@ -1,6 +1,8 @@
 ﻿using Savas.Library.Abstract;
+using Savas.Library.Enum;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +12,18 @@ namespace Savas.Library.Concrate
 {
     internal class SpaceShip : Obje
     {
-
+        public SpaceShip(Size movePlaceSizes, Point loc) : base(movePlaceSizes)
+        {
+            MoveStep = 70;
+       
+            Location = loc;
+            Name = "MySpaceShip";
+            Size = new Size(70, 70);
+            SizeMode = PictureBoxSizeMode.StretchImage;
+            BringToFront();
+            //picture box un arka planını görünmez yapmama windows form müsade etmediği için arka plana uygun bir fon ekledim
+            BackgroundImage = Image.FromFile(@"Image\Fon.jpg");
+        }
+   
     }
 }

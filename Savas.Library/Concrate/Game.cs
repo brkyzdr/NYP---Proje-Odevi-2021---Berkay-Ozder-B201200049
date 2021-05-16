@@ -13,7 +13,7 @@ namespace Savas.Library.Concrate
         private readonly Timer _timePassTimer = new Timer { Interval = 1000 };
         private TimeSpan _timePass;
         private readonly Panel _panelWarPlace;
-        public readonly int LocX;
+        private SpaceShip _spaceShip;
 
         #endregion
 
@@ -69,20 +69,12 @@ namespace Savas.Library.Concrate
 
         }
 
-        //panelWarPlace içine içinde uzay gemimiz olan olan bir picture box ekler
-        //picture box un arka planını görünmez yapmama windows form müsade etmediği için arka plana uygun bir fon ekledim
+        //panelWarPlace içine uzay gemimizi ekler       
         private void MySpaceShipMaking(Point loc)
         {
-            var mySpaceShip = new SpaceShip { Image = Image.FromFile(@"Image\SpaceShip.png") };
-            Image backGround = Image.FromFile(@"Image\Fon.jpg");
-            mySpaceShip.Location = loc;
-            mySpaceShip.Name = "MySpaceShip";
-            mySpaceShip.Size = new Size(70, 70);
-            mySpaceShip.SizeMode = PictureBoxSizeMode.StretchImage;
-            mySpaceShip.BringToFront();
-            mySpaceShip.BackgroundImage = backGround;
+            _spaceShip = new SpaceShip(new Size(_panelWarPlace.Width, 70), loc); 
 
-            _panelWarPlace.Controls.Add(mySpaceShip);
+            _panelWarPlace.Controls.Add(_spaceShip);
         }
 
         private void Finish()
@@ -96,7 +88,7 @@ namespace Savas.Library.Concrate
 
         public void Move(Direction direct)
         {
-            throw new NotImplementedException();
+            _spaceShip.MoveOn(direct);
         }
         #endregion
 

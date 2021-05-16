@@ -53,6 +53,7 @@
     </Compile>
     <Compile Include="Enum\Direction.cs" />
     <Compile Include="Interface\IGame.cs" />
+    <Compile Include="Interface\IMove.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
