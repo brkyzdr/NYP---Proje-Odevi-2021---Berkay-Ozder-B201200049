@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Savas.Desktop
 {
     public partial class Menu : Form
@@ -18,7 +19,12 @@ namespace Savas.Desktop
         }
         private void Menu_Load(object sender, EventArgs e)
         {
+            #region UI
 
+            Image UI = Image.FromFile(@"Image\Menu.png");
+            this.pictureBox1.Image = UI;
+
+            #endregion
         }
 
         private void Menu_KeyDown(object sender, KeyEventArgs e)
