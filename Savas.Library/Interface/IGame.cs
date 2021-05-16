@@ -1,14 +1,12 @@
 ﻿using Savas.Library.Enum;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Savas.Library.Interface
 {
     internal interface IGame
     {
+        event EventHandler TimePassChanged;
+
         bool GameContinue { get;}
         TimeSpan TimePass { get;}
 

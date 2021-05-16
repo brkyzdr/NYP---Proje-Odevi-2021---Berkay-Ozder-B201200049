@@ -12,13 +12,15 @@ using System.Windows.Forms;
 
 namespace Savas.Desktop
 {
-    public partial class AnaForm : Form
+    public partial class MainForm : Form
     {
         private readonly Game _game = new Game();
 
-        public AnaForm()
+        public MainForm()
         {
             InitializeComponent();
+
+            _game.TimePassChanged += Game_TimePassChanged;
         }
 
         private void AnaForm_Load(object sender, EventArgs e)
@@ -46,6 +48,11 @@ namespace Savas.Desktop
                 default:
                     break;
             }
+        }
+
+        private void Game_TimePassChanged(object sender, EventArgs e)
+        {
+            labelTime.Text = _game.TimePass.ToString(@"m\:ss");
         }
     }
 }

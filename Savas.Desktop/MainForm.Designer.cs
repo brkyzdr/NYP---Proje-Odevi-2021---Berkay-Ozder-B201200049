@@ -1,7 +1,7 @@
 ﻿
 namespace Savas.Desktop
 {
-    partial class AnaForm
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,13 +29,13 @@ namespace Savas.Desktop
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnaForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelSavasAlani = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.labelTime = new System.Windows.Forms.Label();
+            this.labelScor = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelSavasAlani.SuspendLayout();
             this.SuspendLayout();
@@ -54,8 +54,8 @@ namespace Savas.Desktop
             // panelSavasAlani
             // 
             this.panelSavasAlani.Controls.Add(this.label4);
-            this.panelSavasAlani.Controls.Add(this.label5);
-            this.panelSavasAlani.Controls.Add(this.label6);
+            this.panelSavasAlani.Controls.Add(this.labelTime);
+            this.panelSavasAlani.Controls.Add(this.labelScor);
             this.panelSavasAlani.Controls.Add(this.label7);
             this.panelSavasAlani.Controls.Add(this.pictureBox1);
             this.panelSavasAlani.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -63,45 +63,6 @@ namespace Savas.Desktop
             this.panelSavasAlani.Name = "panelSavasAlani";
             this.panelSavasAlani.Size = new System.Drawing.Size(1435, 787);
             this.panelSavasAlani.TabIndex = 2;
-            // 
-            // label5
-            // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label5.BackColor = System.Drawing.SystemColors.Control;
-            this.label5.Font = new System.Drawing.Font("AlphaSmart 3000", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label5.Location = new System.Drawing.Point(592, 32);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(100, 23);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "0";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label6
-            // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label6.BackColor = System.Drawing.SystemColors.Control;
-            this.label6.Font = new System.Drawing.Font("AlphaSmart 3000", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label6.Location = new System.Drawing.Point(688, 32);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(100, 23);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "0";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label7
-            // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label7.BackColor = System.Drawing.SystemColors.Control;
-            this.label7.Font = new System.Drawing.Font("AlphaSmart 3000", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label7.Location = new System.Drawing.Point(688, 9);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(100, 23);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "SKOR";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label4
             // 
@@ -116,7 +77,46 @@ namespace Savas.Desktop
             this.label4.Text = "SÜRE";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // AnaForm
+            // labelTime
+            // 
+            this.labelTime.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.labelTime.BackColor = System.Drawing.SystemColors.Control;
+            this.labelTime.Font = new System.Drawing.Font("AlphaSmart 3000", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.labelTime.Location = new System.Drawing.Point(592, 32);
+            this.labelTime.Name = "labelTime";
+            this.labelTime.Size = new System.Drawing.Size(100, 23);
+            this.labelTime.TabIndex = 7;
+            this.labelTime.Text = "0:00";
+            this.labelTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelScor
+            // 
+            this.labelScor.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.labelScor.BackColor = System.Drawing.SystemColors.Control;
+            this.labelScor.Font = new System.Drawing.Font("AlphaSmart 3000", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelScor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.labelScor.Location = new System.Drawing.Point(688, 32);
+            this.labelScor.Name = "labelScor";
+            this.labelScor.Size = new System.Drawing.Size(100, 23);
+            this.labelScor.TabIndex = 8;
+            this.labelScor.Text = "0";
+            this.labelScor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label7.BackColor = System.Drawing.SystemColors.Control;
+            this.label7.Font = new System.Drawing.Font("AlphaSmart 3000", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.label7.Location = new System.Drawing.Point(688, 9);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(100, 23);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "SKOR";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -124,7 +124,7 @@ namespace Savas.Desktop
             this.Controls.Add(this.panelSavasAlani);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "AnaForm";
+            this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.AnaForm_Load);
@@ -139,8 +139,8 @@ namespace Savas.Desktop
 
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panelSavasAlani;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label labelTime;
+        private System.Windows.Forms.Label labelScor;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label4;
     }
