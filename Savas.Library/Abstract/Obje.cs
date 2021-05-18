@@ -13,7 +13,7 @@ namespace Savas.Library.Abstract
     internal abstract class Obje : PictureBox, IMove
     {
         public Size MovePlaceSizes { get; }
-        public double MoveStep { get; protected set; }
+        public int MoveStep { get; protected set; }
 
         public new int Right
         {
@@ -73,7 +73,7 @@ namespace Savas.Library.Abstract
 
             var newTop = Top - MoveStep;
             var overFlow = newTop < 0;
-            Left = overFlow ? 0 : (int)newTop;
+            Top = overFlow ? 0 : newTop;
 
             return Top == 0;
         }
@@ -83,7 +83,7 @@ namespace Savas.Library.Abstract
 
             var newRight = Right + MoveStep;
             var overFlow = newRight > MovePlaceSizes.Width;
-            Right = overFlow ? MovePlaceSizes.Width : (int)newRight;
+            Right = overFlow ? MovePlaceSizes.Width : newRight;
 
             return Right == MovePlaceSizes.Width;
         }
@@ -93,7 +93,7 @@ namespace Savas.Library.Abstract
 
             var newBottom = Bottom + MoveStep;
             var overFlow = newBottom > MovePlaceSizes.Height;
-            Bottom = overFlow ? MovePlaceSizes.Height : (int)newBottom;
+            Bottom = overFlow ? MovePlaceSizes.Height : newBottom;
 
             return Bottom == MovePlaceSizes.Height;
         }
@@ -103,7 +103,7 @@ namespace Savas.Library.Abstract
 
             var newLeft = Left - MoveStep;
             var overFlow = newLeft < 0;
-            Left = overFlow ? 0 : (int)newLeft;
+            Left = overFlow ? 0 : newLeft;
 
             return Left == 0;
         }

@@ -12,7 +12,7 @@ namespace Savas.Library.Interface
     {
         Size MovePlaceSizes { get; }
 
-        double MoveStep { get; }
+        int MoveStep { get; }
 
         /// <summary>
         /// Cismi hareket ettirir

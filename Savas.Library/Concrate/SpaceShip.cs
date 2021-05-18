@@ -14,15 +14,12 @@ namespace Savas.Library.Concrate
     {
         public SpaceShip(Size movePlaceSizes, Point loc) : base(movePlaceSizes)
         {
+            //Paneli 70,70 kordinasyonlar alacak şekilde boyutlandırdım  
             MoveStep = 70;
        
             Location = loc;
-            Name = "MySpaceShip";
             Size = new Size(70, 70);
             SizeMode = PictureBoxSizeMode.StretchImage;
-            BringToFront();
-            //picture box un arka planını görünmez yapmama windows form müsade etmediği için arka plana uygun bir fon ekledim
-            BackgroundImage = Image.FromFile(@"Image\Fon.jpg");
         }
    
     }

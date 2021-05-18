@@ -35,18 +35,16 @@ namespace Savas.Desktop
             this.labelTime = new System.Windows.Forms.Label();
             this.labelScor = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelWarPlace.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelWarPlace
             // 
+            this.panelWarPlace.BackColor = System.Drawing.Color.DarkSlateGray;
             this.panelWarPlace.Controls.Add(this.label4);
             this.panelWarPlace.Controls.Add(this.labelTime);
             this.panelWarPlace.Controls.Add(this.labelScor);
             this.panelWarPlace.Controls.Add(this.label7);
-            this.panelWarPlace.Controls.Add(this.pictureBox1);
             this.panelWarPlace.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelWarPlace.Location = new System.Drawing.Point(0, 0);
             this.panelWarPlace.Name = "panelWarPlace";
@@ -105,16 +103,6 @@ namespace Savas.Desktop
             this.label7.Text = "SKOR";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1400, 700);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 10;
-            this.pictureBox1.TabStop = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -129,7 +117,6 @@ namespace Savas.Desktop
             this.Load += new System.EventHandler(this.AnaForm_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AnaForm_KeyDown);
             this.panelWarPlace.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -140,7 +127,6 @@ namespace Savas.Desktop
         private System.Windows.Forms.Label labelScor;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

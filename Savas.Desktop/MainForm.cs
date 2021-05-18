@@ -15,6 +15,7 @@ namespace Savas.Desktop
     public partial class MainForm : Form
     {
         private readonly Game _game;
+        int pause;
 
         public MainForm()
         {
@@ -27,18 +28,11 @@ namespace Savas.Desktop
 
         private void AnaForm_Load(object sender, EventArgs e)
         {
-            #region BackGround
-
-            Image BackGround = Image.FromFile(@"Image\BackGround.JPEG");
-            this.pictureBox1.Image = BackGround;
-
-            #endregion
-
+            //Arka plan için görsel eklemiştim fakat formda kasma yapıp oyunu optimize çalıştırmadığı için çıkardım
             Menu menu = new Menu();
             menu.ShowDialog();
 
             _game.Start();
-            this.pictureBox1.SendToBack();  //Oyun basladıktan sonra uzay gemisi arkada kalmasın diye
         }
 
         private void AnaForm_KeyDown(object sender, KeyEventArgs e)
@@ -53,6 +47,20 @@ namespace Savas.Desktop
                     break;
                 case Keys.Space:
                     _game.Shoot();
+                    break;
+                case Keys.P:
+                    //P tuşuna bastıkca pause yi 1 artırıp kontrol olarak kullanır
+                    pause++;
+
+                    if (pause%2!=0)
+                    {
+                        _game.GamePause(true);
+                    }
+                    if (pause%2==0)
+                    {
+                        _game.GamePause(false);
+                    }
+                    
                     break;
                 default:
                     break;

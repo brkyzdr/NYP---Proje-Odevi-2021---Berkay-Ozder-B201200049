@@ -48,6 +48,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Concrate\Game.cs" />
+    <Compile Include="Concrate\Laser.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Concrate\SpaceShip.cs">
       <SubType>Component</SubType>
     </Compile>

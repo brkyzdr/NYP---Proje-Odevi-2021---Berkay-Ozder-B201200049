@@ -3,6 +3,7 @@ using Savas.Library.Interface;
 using System;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Collections.Generic;
 
 namespace Savas.Library.Concrate
 {
@@ -14,6 +15,7 @@ namespace Savas.Library.Concrate
         private TimeSpan _timePass;
         private readonly Panel _panelWarPlace;
         private SpaceShip _spaceShip;
+        private readonly List<Laser> _lasers = new List<Laser>();
 
         #endregion
 
@@ -54,7 +56,11 @@ namespace Savas.Library.Concrate
 
         public void Shoot()
         {
-            throw new NotImplementedException();
+            if (!GameContinue) return;
+
+             var laser = new Laser(_panelWarPlace.Size, _spaceShip.Center+35);  // uzay gemisinin boyutu 70,70 iken lazerin boyutu 35,35 bu yüzden merkezleri denk gelsin diye centere +35 ekledim
+            _lasers.Add(laser);
+            _panelWarPlace.Controls.Add(laser);
         }
 
 
@@ -66,13 +72,12 @@ namespace Savas.Library.Concrate
             _timePassTimer.Start();
 
             MySpaceShipMaking(new Point((_panelWarPlace.Width - 70) / 2, _panelWarPlace.Height - 70));
-
         }
 
-        //panelWarPlace içine uzay gemimizi ekler       
+        //panelWarPlace içine uzay gemimizi parametre olarak aldığımız konuma ekler       
         private void MySpaceShipMaking(Point loc)
         {
-            _spaceShip = new SpaceShip(new Size(_panelWarPlace.Width, 70), loc); 
+            _spaceShip = new SpaceShip(new Size(_panelWarPlace.Width, 70), loc);
 
             _panelWarPlace.Controls.Add(_spaceShip);
         }
@@ -88,7 +93,23 @@ namespace Savas.Library.Concrate
 
         public void Move(Direction direct)
         {
+            if (!GameContinue) return;
+
             _spaceShip.MoveOn(direct);
+        }
+
+        public void GamePause(bool pause)
+        {
+            if (pause)
+            {
+                GameContinue = false;
+                _timePassTimer.Stop();
+            }
+            if (!pause)
+            {
+                GameContinue = true;
+                _timePassTimer.Start();
+            }
         }
         #endregion
 
