@@ -77,16 +77,6 @@ namespace Savas.Library.Abstract
 
             return Top == 0;
         }
-        private bool MoveOnRight()
-        {
-            if (Right == MovePlaceSizes.Width) return true;
-
-            var newRight = Right + MoveStep;
-            var overFlow = newRight > MovePlaceSizes.Width;
-            Right = overFlow ? MovePlaceSizes.Width : newRight;
-
-            return Right == MovePlaceSizes.Width;
-        }
         private bool MoveOnDown()
         {
             if (Bottom == MovePlaceSizes.Height) return true;
@@ -97,6 +87,18 @@ namespace Savas.Library.Abstract
 
             return Bottom == MovePlaceSizes.Height;
         }
+
+        private bool MoveOnRight()
+        {
+            if (Right == MovePlaceSizes.Width) return true;
+
+            var newRight = Right + MoveStep;
+            var overFlow = newRight > MovePlaceSizes.Width;
+            Right = overFlow ? MovePlaceSizes.Width : newRight;
+
+            return Right == MovePlaceSizes.Width;
+        }
+
         private bool MoveOnLeft()
         {
             if (Left == 0) return true;

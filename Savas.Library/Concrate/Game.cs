@@ -12,11 +12,13 @@ namespace Savas.Library.Concrate
         #region Fields
 
         private readonly Timer _timePassTimer = new Timer { Interval = 1000 };
-        private readonly Timer _moveTimer = new Timer { Interval = 10 };
+        private readonly Timer _moveTimer = new Timer { Interval = 1 };
+        private readonly Timer _enemySpaceShipCreateTimer = new Timer { Interval = 2000 };
         private TimeSpan _timePass;
         private readonly Panel _panelWarPlace;
         private SpaceShip _spaceShip;
         private readonly List<Laser> _lasers = new List<Laser>();
+        private readonly List<EnemySpaceShip> _enemySpaceShips = new List<EnemySpaceShip>();
 
         #endregion
 
@@ -47,9 +49,10 @@ namespace Savas.Library.Concrate
         public Game(Panel panelWarPlace)
         {
             _panelWarPlace = panelWarPlace;
-            
+
             _timePassTimer.Tick += TimePassTimer_Tick;
             _moveTimer.Tick += MoveTimer_Tick;
+            _enemySpaceShipCreateTimer.Tick += EnemySpaceShipCreateTimer_Tick;
 
         }
 
@@ -62,10 +65,51 @@ namespace Savas.Library.Concrate
         {
             MoveOnLasers();
         }
+        private void EnemySpaceShipCreateTimer_Tick(object sender, EventArgs e)
+        {
+            EnemySpaceShipCreate();
+        }
+
+        public void Start()
+        {
+            if (GameContinue) return;
+
+            GameContinue = true;
+
+            StartTimer();
+
+            MySpaceShipCreate(new Point((_panelWarPlace.Width - 70) / 2, _panelWarPlace.Height - 70));
+            EnemySpaceShipCreate();
+
+        }
+
+        private void Finish()
+        {
+            if (!GameContinue) return;
+
+            GameContinue = false;
+            StopTimer();
+
+        }
+
+        //panelWarPlace içine uzay gemimizi parametre olarak aldığımız konuma ekler       
+        private void MySpaceShipCreate(Point loc)
+        {
+            _spaceShip = new SpaceShip(new Size(_panelWarPlace.Width, 70), loc);
+
+            _panelWarPlace.Controls.Add(_spaceShip);
+        }
+
+        private void EnemySpaceShipCreate()
+        {
+            var enemySpaceShip = new EnemySpaceShip(_panelWarPlace.Size);
+            _enemySpaceShips.Add(enemySpaceShip);
+            _panelWarPlace.Controls.Add(enemySpaceShip);
+        }
 
         private void MoveOnLasers()
         {
-            for (int i = _lasers.Count-1; i >= 0; i--)
+            for (int i = _lasers.Count - 1; i >= 0; i--)
             {
                 var laser = _lasers[i];
                 var hit = laser.MoveOn(Direction.Up);
@@ -81,41 +125,11 @@ namespace Savas.Library.Concrate
         {
             if (!GameContinue) return;
 
-             var laser = new Laser(_panelWarPlace.Size, _spaceShip.Center+35);  // uzay gemisinin boyutu 70,70 iken lazerin boyutu 35,35 bu yüzden merkezleri denk gelsin diye centere +35 ekledim
+            var laser = new Laser(_panelWarPlace.Size, _spaceShip.Center + 35);  // uzay gemisinin boyutu 70,70 iken lazerin boyutu 35,35 bu yüzden merkezleri denk gelsin diye centere +35 ekledim
             _lasers.Add(laser);
             _panelWarPlace.Controls.Add(laser);
         }
 
-
-        public void Start()
-        {
-            if (GameContinue) return;
-
-            GameContinue = true;
-
-            StartTimer();
-
-            MySpaceShipMaking(new Point((_panelWarPlace.Width - 70) / 2, _panelWarPlace.Height - 70));
-        }
-
-
-
-        //panelWarPlace içine uzay gemimizi parametre olarak aldığımız konuma ekler       
-        private void MySpaceShipMaking(Point loc)
-        {
-            _spaceShip = new SpaceShip(new Size(_panelWarPlace.Width, 70), loc);
-
-            _panelWarPlace.Controls.Add(_spaceShip);
-        }
-
-        private void Finish()
-        {
-            if (!GameContinue) return;
-
-            GameContinue = false;
-            StopTimer();
-
-        }
 
         public void Move(Direction direct)
         {
@@ -143,6 +157,7 @@ namespace Savas.Library.Concrate
 
             _timePassTimer.Start();
             _moveTimer.Start();
+            _enemySpaceShipCreateTimer.Start();
 
         }
         private void StopTimer()
@@ -150,6 +165,7 @@ namespace Savas.Library.Concrate
 
             _timePassTimer.Stop();
             _moveTimer.Stop();
+            _enemySpaceShipCreateTimer.Stop();
 
         }
         #endregion
