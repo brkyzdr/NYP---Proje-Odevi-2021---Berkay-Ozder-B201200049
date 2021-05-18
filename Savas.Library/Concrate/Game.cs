@@ -12,6 +12,7 @@ namespace Savas.Library.Concrate
         #region Fields
 
         private readonly Timer _timePassTimer = new Timer { Interval = 1000 };
+        private readonly Timer _moveTimer = new Timer { Interval = 10 };
         private TimeSpan _timePass;
         private readonly Panel _panelWarPlace;
         private SpaceShip _spaceShip;
@@ -46,12 +47,34 @@ namespace Savas.Library.Concrate
         public Game(Panel panelWarPlace)
         {
             _panelWarPlace = panelWarPlace;
+            
             _timePassTimer.Tick += TimePassTimer_Tick;
+            _moveTimer.Tick += MoveTimer_Tick;
+
         }
 
         private void TimePassTimer_Tick(object sender, EventArgs e)
         {
             TimePass += TimeSpan.FromSeconds(1);
+        }
+
+        private void MoveTimer_Tick(object sender, EventArgs e)
+        {
+            MoveOnLasers();
+        }
+
+        private void MoveOnLasers()
+        {
+            for (int i = _lasers.Count-1; i >= 0; i--)
+            {
+                var laser = _lasers[i];
+                var hit = laser.MoveOn(Direction.Up);
+                if (hit)
+                {
+                    _lasers.Remove(laser);
+                    _panelWarPlace.Controls.Remove(laser);
+                }
+            }
         }
 
         public void Shoot()
@@ -69,10 +92,13 @@ namespace Savas.Library.Concrate
             if (GameContinue) return;
 
             GameContinue = true;
-            _timePassTimer.Start();
+
+            StartTimer();
 
             MySpaceShipMaking(new Point((_panelWarPlace.Width - 70) / 2, _panelWarPlace.Height - 70));
         }
+
+
 
         //panelWarPlace içine uzay gemimizi parametre olarak aldığımız konuma ekler       
         private void MySpaceShipMaking(Point loc)
@@ -87,7 +113,7 @@ namespace Savas.Library.Concrate
             if (!GameContinue) return;
 
             GameContinue = false;
-            _timePassTimer.Stop();
+            StopTimer();
 
         }
 
@@ -103,13 +129,28 @@ namespace Savas.Library.Concrate
             if (pause)
             {
                 GameContinue = false;
-                _timePassTimer.Stop();
+                StopTimer();
             }
             if (!pause)
             {
                 GameContinue = true;
-                _timePassTimer.Start();
+                StartTimer();
             }
+        }
+
+        private void StartTimer()
+        {
+
+            _timePassTimer.Start();
+            _moveTimer.Start();
+
+        }
+        private void StopTimer()
+        {
+
+            _timePassTimer.Stop();
+            _moveTimer.Stop();
+
         }
         #endregion
 

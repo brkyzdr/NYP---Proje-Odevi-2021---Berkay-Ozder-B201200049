@@ -13,7 +13,7 @@ namespace Savas.Library.Concrate
     {
         public Laser(Size movePlaceSizes,int spaceShipLocation) : base(movePlaceSizes)
         {
-            MoveStep = (int)(Height * 1.5);
+            MoveStep = 1;
             SetStartPosition(spaceShipLocation);
             Size = new Size(35, 35);
             SizeMode = PictureBoxSizeMode.StretchImage;

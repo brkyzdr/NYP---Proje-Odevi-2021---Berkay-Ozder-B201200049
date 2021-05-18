@@ -14,7 +14,6 @@ namespace Savas.Library.Concrate
     {
         public SpaceShip(Size movePlaceSizes, Point loc) : base(movePlaceSizes)
         {
-            //Paneli 70,70 kordinasyonlar alacak şekilde boyutlandırdım  
             MoveStep = 70;
        
             Location = loc;
