@@ -1,24 +1,42 @@
-﻿using Savas.Library.Enum;
+﻿/*
+            SAKARYA ÜNİVERSİTESİ
+  BİLGİSAYAR VE BİLİŞİM BİLİMLERİ FAKÜLTESİ
+      BİLİŞİM SİSTEMLERİ MÜHENDİSLİĞİ
+  
+    NESNEYE YÖNELİK PROGRAMLAMA DERSİ PROJE ÖDEVİ
+
+    BERKAY ÖZDER
+    B201200049
+    A GRUBU
+ 
+ 
+ */
+
+using Savas.Library.Enum;
 using Savas.Library.Interface;
 using System;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Collections.Generic;
+using Savas.Library.Concrate;
 
 namespace Savas.Library.Concrate
 {
     public class Game : IGame
     {
         #region Fields
-
         private readonly Timer _timePassTimer = new Timer { Interval = 1000 };
         private readonly Timer _moveTimer = new Timer { Interval = 1 };
-        private readonly Timer _enemySpaceShipCreateTimer = new Timer { Interval = 2000 };
+        private Timer _enemySpaceShipCreateTimer = new Timer { Interval = 2000 };
         private TimeSpan _timePass;
         private readonly Panel _panelWarPlace;
         private SpaceShip _spaceShip;
         private readonly List<Laser> _lasers = new List<Laser>();
         private readonly List<EnemySpaceShip> _enemySpaceShips = new List<EnemySpaceShip>();
+        private int _score;
+        private double scoreDifficulty = 100;
+        private int difficulty = 1;
+        private Form _gameOver;
 
         #endregion
 
@@ -43,12 +61,25 @@ namespace Savas.Library.Concrate
             }
         }
 
+        //Düşman vurmak +10 puan, mermi harcamak -1 puan
+        public int Score
+        {
+            get => _score;
+            private set
+            {
+                _score = value;
+
+
+            }
+        }
+
         #endregion
 
         #region Metots
-        public Game(Panel panelWarPlace)
+        public Game(Panel panelWarPlace, Form gameOver)
         {
             _panelWarPlace = panelWarPlace;
+            _gameOver = gameOver;
 
             _timePassTimer.Tick += TimePassTimer_Tick;
             _moveTimer.Tick += MoveTimer_Tick;
@@ -61,14 +92,20 @@ namespace Savas.Library.Concrate
             TimePass += TimeSpan.FromSeconds(1);
         }
 
+
         private void MoveTimer_Tick(object sender, EventArgs e)
         {
             MoveOnLasers();
+            MoveOnEnemySpaceShi();
+            RemoveHitsEnemy();
+
         }
+
         private void EnemySpaceShipCreateTimer_Tick(object sender, EventArgs e)
         {
             EnemySpaceShipCreate();
         }
+
 
         public void Start()
         {
@@ -90,6 +127,8 @@ namespace Savas.Library.Concrate
             GameContinue = false;
             StopTimer();
 
+            _gameOver.ShowDialog();
+
         }
 
         //panelWarPlace içine uzay gemimizi parametre olarak aldığımız konuma ekler       
@@ -103,6 +142,17 @@ namespace Savas.Library.Concrate
         private void EnemySpaceShipCreate()
         {
             var enemySpaceShip = new EnemySpaceShip(_panelWarPlace.Size);
+
+            enemySpaceShip.MoveStep = difficulty;
+            //Skor scoreDifficulty değerini geçtiği zaman düşmanların hızı 1 adım artacak ve yeni scoreDifficulty değeri 1.5 kat artacak  
+            if (scoreDifficulty < Score)
+            {
+                difficulty++;
+                enemySpaceShip.MoveStep = difficulty;
+                scoreDifficulty *= 1.5;
+            }
+
+
             _enemySpaceShips.Add(enemySpaceShip);
             _panelWarPlace.Controls.Add(enemySpaceShip);
         }
@@ -121,10 +171,42 @@ namespace Savas.Library.Concrate
             }
         }
 
+        private void MoveOnEnemySpaceShi()
+        {
+            foreach (var enemySpaceShip in _enemySpaceShips)
+            {
+                var hit = enemySpaceShip.MoveOn(Direction.Down);
+                if (!hit) continue;
+
+                Finish();
+
+                break;
+
+            }
+        }
+        private void RemoveHitsEnemy()
+        {
+            for (int i = _enemySpaceShips.Count - 1; i >= 0; i--)
+            {
+                var enemySpaceShip = _enemySpaceShips[i];
+
+                var hittingLaser = enemySpaceShip.IsHit(_lasers);
+                if (hittingLaser is null) continue;
+
+                Score += 10;    //Düşman vuruldukca +10 puan
+                _enemySpaceShips.Remove(enemySpaceShip);
+                _lasers.Remove(hittingLaser);
+                _panelWarPlace.Controls.Remove(enemySpaceShip);
+                _panelWarPlace.Controls.Remove(hittingLaser);
+            }
+        }
+
+
         public void Shoot()
         {
             if (!GameContinue) return;
 
+            Score -= 1;
             var laser = new Laser(_panelWarPlace.Size, _spaceShip.Center + 35);  // uzay gemisinin boyutu 70,70 iken lazerin boyutu 35,35 bu yüzden merkezleri denk gelsin diye centere +35 ekledim
             _lasers.Add(laser);
             _panelWarPlace.Controls.Add(laser);
@@ -142,13 +224,15 @@ namespace Savas.Library.Concrate
         {
             if (pause)
             {
-                GameContinue = false;
                 StopTimer();
+                GameContinue = false;
+
             }
             if (!pause)
             {
-                GameContinue = true;
                 StartTimer();
+                GameContinue = true;
+
             }
         }
 

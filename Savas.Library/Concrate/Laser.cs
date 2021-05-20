@@ -1,4 +1,18 @@
-﻿using Savas.Library.Abstract;
+﻿/*
+            SAKARYA ÜNİVERSİTESİ
+  BİLGİSAYAR VE BİLİŞİM BİLİMLERİ FAKÜLTESİ
+      BİLİŞİM SİSTEMLERİ MÜHENDİSLİĞİ
+  
+    NESNEYE YÖNELİK PROGRAMLAMA DERSİ PROJE ÖDEVİ
+
+    BERKAY ÖZDER
+    B201200049
+    A GRUBU
+ 
+ 
+ */
+
+using Savas.Library.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

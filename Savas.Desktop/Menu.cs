@@ -1,11 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿/*
+            SAKARYA ÜNİVERSİTESİ
+  BİLGİSAYAR VE BİLİŞİM BİLİMLERİ FAKÜLTESİ
+      BİLİŞİM SİSTEMLERİ MÜHENDİSLİĞİ
+  
+    NESNEYE YÖNELİK PROGRAMLAMA DERSİ PROJE ÖDEVİ
+
+    BERKAY ÖZDER
+    B201200049
+    A GRUBU
+ 
+ 
+ */
+
+using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -36,9 +44,9 @@ namespace Savas.Desktop
             }
             if (e.KeyCode == Keys.S)
             {
-                MessageBox.Show("En yüksek skorlar.");
+                Top5Score top5 = new Top5Score();
+                top5.ShowDialog();
             }
         }
-
     }
 }

@@ -33,7 +33,7 @@ namespace Savas.Desktop
             this.panelWarPlace = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.labelTime = new System.Windows.Forms.Label();
-            this.labelScor = new System.Windows.Forms.Label();
+            this.labelScore = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.panelWarPlace.SuspendLayout();
             this.SuspendLayout();
@@ -43,7 +43,7 @@ namespace Savas.Desktop
             this.panelWarPlace.BackColor = System.Drawing.Color.DarkSlateGray;
             this.panelWarPlace.Controls.Add(this.label4);
             this.panelWarPlace.Controls.Add(this.labelTime);
-            this.panelWarPlace.Controls.Add(this.labelScor);
+            this.panelWarPlace.Controls.Add(this.labelScore);
             this.panelWarPlace.Controls.Add(this.label7);
             this.panelWarPlace.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelWarPlace.Location = new System.Drawing.Point(0, 0);
@@ -77,18 +77,18 @@ namespace Savas.Desktop
             this.labelTime.Text = "0:00";
             this.labelTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // labelScor
+            // labelScore
             // 
-            this.labelScor.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.labelScor.BackColor = System.Drawing.SystemColors.Control;
-            this.labelScor.Font = new System.Drawing.Font("AlphaSmart 3000", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelScor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.labelScor.Location = new System.Drawing.Point(673, 36);
-            this.labelScor.Name = "labelScor";
-            this.labelScor.Size = new System.Drawing.Size(100, 23);
-            this.labelScor.TabIndex = 8;
-            this.labelScor.Text = "0";
-            this.labelScor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelScore.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.labelScore.BackColor = System.Drawing.SystemColors.Control;
+            this.labelScore.Font = new System.Drawing.Font("AlphaSmart 3000", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelScore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.labelScore.Location = new System.Drawing.Point(673, 36);
+            this.labelScore.Name = "labelScore";
+            this.labelScore.Size = new System.Drawing.Size(100, 23);
+            this.labelScore.TabIndex = 8;
+            this.labelScore.Text = "0";
+            this.labelScore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label7
             // 
@@ -124,9 +124,9 @@ namespace Savas.Desktop
         #endregion
         private System.Windows.Forms.Panel panelWarPlace;
         private System.Windows.Forms.Label labelTime;
-        private System.Windows.Forms.Label labelScor;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label4;
+        public System.Windows.Forms.Label labelScore;
     }
 }
 
